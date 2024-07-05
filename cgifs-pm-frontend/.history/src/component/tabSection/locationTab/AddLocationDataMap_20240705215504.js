@@ -37,7 +37,7 @@ export default function AddMapComponent({
       mapStyle="mapbox://styles/mapbox/streets-v11"
       mapboxAccessToken={mapboxgl.accessToken}
       onClick={handleClick}
-    > <NavigationControl />
+    >
       {marker && (
         <Marker longitude={marker.lng} latitude={marker.lat} color="red" />
       )}

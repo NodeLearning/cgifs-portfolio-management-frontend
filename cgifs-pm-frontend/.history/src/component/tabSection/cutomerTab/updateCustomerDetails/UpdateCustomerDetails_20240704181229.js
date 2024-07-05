@@ -10,8 +10,6 @@ import {
 } from "@mui/material";
 import { updateMember } from "../../../../API";
 import AddLocationDataMap from "../../locationTab/AddLocationDataMap";
-import { toast } from "react-toastify";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function UpdateCustomerModal({
   open,
@@ -36,32 +34,25 @@ export default function UpdateCustomerModal({
     setLongitude(lng.toFixed(6));
   };
 
-  const queryClient = useQueryClient();
+  const handleUpdate = async () => {
+    try {
+      const updatedData = {
+        customerName: name,
+        latitude: latitude,
+        longitude: longitude,
+      };
+      await updateMember(customer._id, updatedData);
 
-  const mutation = useMutation({
-    mutationFn: (updatedData) => updateMember(customer._id, updatedData),
-    onSuccess: () => {
-      queryClient.invalidateQueries("members");
       if (typeof onUpdate === "function") {
         onUpdate();
       }
+
       handleClose();
-    },
-    onError: (error) => {
+    } catch (error) {
       console.error("Error updating customer:", error);
-      toast.error(error.response.data.message);
-    },
-  });
-
-  const handleUpdate = () => {
-    const updatedData = {
-      customerName: name,
-      latitude: latitude,
-      longitude: longitude,
-    };
-    mutation.mutate(updatedData);
+    }
   };
-
+  console.log(customer);
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle sx={{ padding: "2rem 7rem 1rem 7rem" }}>

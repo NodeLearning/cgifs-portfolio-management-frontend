@@ -41,10 +41,6 @@ export default function CustomerDetailsCard({
       handleCloseLogoutDialog();
       toast.warning("Selected member is deleted.");
     },
-    onError: (error) => {
-      console.error("Error updating customer:", error);
-      toast.error(error.response.data.message);
-    },
   });
 
   const handleOpen = () => {

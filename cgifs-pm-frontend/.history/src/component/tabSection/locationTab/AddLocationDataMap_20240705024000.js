@@ -14,7 +14,7 @@ export default function AddMapComponent({
   const [viewState, setViewState] = useState({
     longitude: initialLng || 80.6337,
     latitude: initialLat || 7.8731,
-    zoom: 5,
+    zoom: 3,
   });
   const [marker, setMarker] = useState(
     initialLat && initialLng ? { lng: initialLng, lat: initialLat } : null

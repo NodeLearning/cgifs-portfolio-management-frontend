@@ -12,7 +12,7 @@ export default function CustomerDetailsMap({ customers }) {
 
   const [lng] = useState(80.6337);
   const [lat] = useState(7.8731);
-  const [zoom] = useState(6);
+  const [zoom] = useState(2);
 
   // Initialize map when component mounts
   useEffect(() => {

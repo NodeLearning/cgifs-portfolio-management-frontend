@@ -186,7 +186,6 @@ export default function LogingForm() {
                 <OutlinedInput
                   id="outlined-adornment-password"
                   type={showPassword ? "text" : "password"}
-                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   endAdornment={

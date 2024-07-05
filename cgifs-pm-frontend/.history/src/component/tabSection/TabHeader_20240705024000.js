@@ -67,7 +67,6 @@ export default function FullWidthTabs() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("role");
     setOpenLogoutDialog(false);
     navigate("/");
   };
@@ -96,14 +95,13 @@ export default function FullWidthTabs() {
         color="primary"
         aria-label="logout"
         sx={{
-          position: "fixed",
+          position: "absolute",
           bottom: theme.spacing(2),
           right: theme.spacing(2),
           bgcolor: "#008080",
           "&:hover": {
             bgcolor: "#0C9E9E",
           },
-          zIndex: 1000,
         }}
         onClick={handleLogoutClick}
       >
